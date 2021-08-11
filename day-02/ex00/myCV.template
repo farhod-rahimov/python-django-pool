@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Резюме в html странице</title>
+        <style>
+            table {
+                border: 1px solid rgb(182, 3, 3);
+                border-collapse: collapse;
+            }
+            th {
+                border: 1px solid rgb(182, 3, 3);
+                padding: 4px;
+                text-align: center;
+            }
+            td {
+                border: 1px solid rgb(182, 3, 3);
+                padding: 4px;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Резюме {name} {surname}</h1>
+        <h2>Возраст {age}</h2>
+        <h2>Профессия {profession}</h2>
+        <h2>Навыки</h2>
+        <ul>
+            <li>Знание языков C, C++ 98, Python 3</li>
+            <li>Умение работать на VSCode, Clion, Git</li>
+        </ul>
+        <h2>Карьерный путь</h2>
+        <table>
+            <tr>
+                <th>Год</th><th>Компания</th><th>Должность</th>
+            </tr>
+            <tr>
+                <td>2016</td><td>ООО "Компания 1"</td><td>тестировщик</td>
+            </tr>
+            <tr>
+                <td>2017</td><td>ООО "Компания 1"</td><td>junior backend разработчик на Python Django</td>
+            </tr>
+            <tr>
+                <td>2018</td><td>ООО "Компания 1"</td><td>middle backend разработчик на Python Django</td>
+            </tr>
+            <tr>
+                <td>2020</td><td>ООО "Компания 2"</td><td style="border-color: #424242;">senior backend разработчик на Python Django</td>
+            </tr>
+        </table>
+        <h2>Вам стоит связаться со мной, если вам нужен:</h2>
+        <ol>
+            <li>берущий на себя ответственность человек</li>
+            <li>профессионал в своем деле</li>
+        </ol>
+
+    </body>
+</html>
