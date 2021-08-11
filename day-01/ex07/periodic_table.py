@@ -45,7 +45,7 @@ def start_html(f):
     text += "<html lang=\"en\">\n"
     text += "   <head>\n"
     text += "      <meta charset=\"UTF-8\">\n"
-    text += "          <title>Periodic table</title>\n"
+    text += "      <title>Periodic table</title>\n"
     text += "   </head>\n"
     text += "   <body>\n"
     text += "       <table>\n"
@@ -64,22 +64,23 @@ def create_new_raw(f):
 
     return None
 
-def add_element_in_table(f,  data, last_position):
+# def add_element_in_table(f,  data, last_position):
+def add_element_in_table(f,  data):
     text = ""
     # print(last_position)
 
     text += "               <td style=\"border: 1px solid black; padding:4px\">\n"
-    text += "                    <h4>" + data[0] + "</h4>\n"
+    text += "                    <h4 align = \"left\">" + data[0] + "</h4>\n"
     text += "                       <ul>\n"
-    text += "                           <li>No " + data[1][0]['number'].strip() + "</li>\n"
+    text += "                           <li>№ " + data[1][0]['number'].strip() + "</li>\n"
     text += "                           <li>" + data[1][0]['small'].strip() + "</li>\n"
     text += "                           <li>" + data[1][0]['molar'].strip() + "</li>\n"
     text += "                           <li>" + data[1][0]['electron'].strip() + "</li>\n"
     text += "                       </ul>\n"
     text += "                </td>\n"
     
-    if last_position == 17:
-        create_new_raw(f)
+    # if last_position == 17:
+    #     create_new_raw(f)
 
     f.write(text)
     return None
@@ -118,22 +119,29 @@ def create_html_file(html_name, edited_file):
     with open(html_name, 'w') as f:
         start_html(f)
         number = 1
-        last_position = 0
+        old_position = 0
+        new_position = 0
         while number <= 118:
+            old_position = new_position
             element = get_element_from_number(number, edited_file)
             if (element != None):
-                while last_position < int(element[1][0]['position'].strip()):
-                    add_empty_element_in_table(f)
-                    last_position += 1
-                add_element_in_table(f, element, last_position)
-            else:
-                add_empty_element_in_table(f)
-            last_position += 1
-            last_position = last_position % 17
-            if last_position == 0:
-                create_new_raw(f)
+                new_position = int(element[1][0]['position'].strip())
 
+                while old_position < new_position - 1:
+                    add_empty_element_in_table(f)
+                    old_position += 1
+                
+                add_element_in_table(f, element)
+            elif number < 57 and number > 71:
+                if number < 89 and number > 103:
+                    add_empty_element_in_table(f)
+            
+
+            if new_position != 0 and new_position % 17 == 0:
+                create_new_raw(f)
             number += 1
+        
+        
         end_html(f)
     return None
 
