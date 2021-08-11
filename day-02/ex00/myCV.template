@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Резюме в html странице</title>
+        <title>{title}</title>
         <style>
             table {
                 border: 1px solid rgb(182, 3, 3);

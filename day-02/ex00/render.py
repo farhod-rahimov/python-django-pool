@@ -2,7 +2,7 @@ import sys
 import os
 import re
 
-# import settings as g_vars
+import settings as g_vars
 
 def check_errors():
     if (len(sys.argv) != 2):
@@ -39,16 +39,12 @@ def check_errors():
 
     return None
 
-def replace_vars(g_vars, file_to_edit):
-    tmp = ""
-
-    i = 0
-    while i < len(g_vars):
-        tmp = "{"
-        tmp += g_vars[i][0]
-        tmp += "}"
-        file_to_edit = re.sub(tmp, g_vars[i][1], file_to_edit)
-        i += 1
+def replace_vars(file_to_edit):
+    file_to_edit = re.sub("{title}", str(g_vars.title), file_to_edit)
+    file_to_edit = re.sub("{name}", str(g_vars.name), file_to_edit)
+    file_to_edit = re.sub("{surname}", str(g_vars.surname), file_to_edit)
+    file_to_edit = re.sub("{age}", str(g_vars.age), file_to_edit)
+    file_to_edit = re.sub("{profession}", str(g_vars.profession), file_to_edit)
 
     return file_to_edit
 
@@ -69,20 +65,7 @@ def main():
     with open(sys.argv[1], 'r') as f:
         file_to_edit = f.read()
 
-    with open("settings.py", 'r') as f:
-        g_vars = f.read()
-    
-    g_vars = g_vars.split('\n')
-
-    i = 0
-    while i < len(g_vars):
-        g_vars[i] = g_vars[i].split(' = ')
-        g_vars[i][1] = str(g_vars[i][1]).strip('\"')
-        g_vars[i][1] = str(g_vars[i][1]).strip('\'')
-        g_vars[i] = tuple(g_vars[i])
-        i += 1
-    
-    edited_file = replace_vars(g_vars, file_to_edit)
+    edited_file = replace_vars(file_to_edit)
     create_new_html_file(edited_file)
 
 main()
