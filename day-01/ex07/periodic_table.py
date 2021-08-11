@@ -50,45 +50,58 @@ def start_html(f):
     text += "   <body>\n"
     text += "       <table>\n"
     text += "           <tr>\n"
-    text += "               <td style=\"border: 1px solid black; padding:10px\">\n"
     
     f.write(text)
     return None
 
-def add_element_in_table(f,  data):
-    # text = "        <h1>Periodic table</h1>\n"
-    text = "                    <h4>" + data[0] + "/<h4>\n"
+def create_new_raw(f):
+    text = ""
+    
+    text += "            </tr>\n"
+    text += "            <tr>\n"
+
+    f.write(text)
+
+    return None
+
+def add_element_in_table(f,  data, last_position):
+    text = ""
+    # print(last_position)
+
+    text += "               <td style=\"border: 1px solid black; padding:4px\">\n"
+    text += "                    <h4>" + data[0] + "</h4>\n"
     text += "                       <ul>\n"
     text += "                           <li>No " + data[1][0]['number'].strip() + "</li>\n"
     text += "                           <li>" + data[1][0]['small'].strip() + "</li>\n"
     text += "                           <li>" + data[1][0]['molar'].strip() + "</li>\n"
     text += "                           <li>" + data[1][0]['electron'].strip() + "</li>\n"
     text += "                       </ul>\n"
+    text += "                </td>\n"
+    
+    if last_position == 17:
+        create_new_raw(f)
 
     f.write(text)
     return None
 
 def add_empty_element_in_table(f):
-    text = "                    <h4> Empty" + "/<h4>\n"
-    text += "                       <ul>\n"
-    text += "                           <li>" + "</li>\n"
-    text += "                           <li>" + "</li>\n"
-    text += "                           <li>" + "</li>\n"
-    text += "                           <li>" + "</li>\n"
-    text += "                       </ul>\n"
+    text = ""
+    text += "               <td style=\"border: 1px solid black; padding:4px\">\n"
+    text += "                </td>\n"
     
     f.write(text)
     return None
 
 def end_html(f):
-    text = "               </td>\n"
-    text += "           </tr>\n"
+    text = "            </tr>\n"
     text += "        </table>\n"
     text += "    </body>\n"
     text += "</html>\n"
     
     f.write(text)
     return None
+
+# ------------------------------------------------------------------ #
 
 def get_element_from_number(pos, edited_file):
     i = 0
@@ -112,10 +125,14 @@ def create_html_file(html_name, edited_file):
                 while last_position < int(element[1][0]['position'].strip()):
                     add_empty_element_in_table(f)
                     last_position += 1
-                add_element_in_table(f, element)
-                last_position = int(element[1][0]['position'].strip())
-            # else:
-            #     add_empty_element_in_table(f)
+                add_element_in_table(f, element, last_position)
+            else:
+                add_empty_element_in_table(f)
+            last_position += 1
+            last_position = last_position % 17
+            if last_position == 0:
+                create_new_raw(f)
+
             number += 1
         end_html(f)
     return None
