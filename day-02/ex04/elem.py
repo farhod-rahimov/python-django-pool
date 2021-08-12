@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 
-import sys # delete
-
 
 class Text(str):
 	"""
