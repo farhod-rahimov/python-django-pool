@@ -24,7 +24,7 @@ class CoffeeMachine:
         pass
 
     def serve(self, hot_bev):
-        if self.serve_num == 10:
+        if self.serve_num >= 10:
             raise CoffeeMachine.BrokenMachineException()
         
         self.serve_num += 1
@@ -50,7 +50,7 @@ def main():
 
     drinks = [bev.HotBeverage(), bev.Coffee(), bev.Tea(), bev.Chocolate(), bev.Cappuccino()]
 
-    work_machine(machine, drinks, 11)
+    work_machine(machine, drinks, 10)
     machine.repair()
     work_machine(machine, drinks, 10)
 
