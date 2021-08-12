@@ -26,13 +26,13 @@ def check_errors():
     try:
         fd = os.open(sys.argv[1], os.O_RDONLY)
     except Exception:
-        print(f'Error. File \'{sys.argv[1]}\' does not exist', file=sys.stderr)
+        print(f'Error. Cannot open file \'{sys.argv[1]}\'', file=sys.stderr)
         sys.exit(1)
 
     try:
         fd = os.open("settings.py", os.O_RDONLY)
     except Exception:
-        print(f'Error. File \'settings.py\' does not exist', file=sys.stderr)
+        print(f'Error. Cannot open file \'settings.py\'', file=sys.stderr)
         sys.exit(1)
 
     os.close(fd)
