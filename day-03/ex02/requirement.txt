@@ -1,0 +1,5 @@
+pip3 install --target="./local_lib" --upgrade --ignore-installed requests
+pip3 install --target="./local_lib" --upgrade --ignore-installed dewiki
+
+pip3 install requests
+pip3 install dewiki
