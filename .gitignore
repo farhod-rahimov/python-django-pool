@@ -1,3 +1,5 @@
 .DS_Store
 *.tar.gz
 periodic_table.html
+*.log
+local_lib
