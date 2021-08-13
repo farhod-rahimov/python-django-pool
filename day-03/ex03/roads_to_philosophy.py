@@ -51,11 +51,9 @@ def main():
             sys.exit(0)
 
         all_titles.append(soap.title.text)
-        print (soap.title.text)
 
         if (soap.title.text == "Philosophy - Wikipedia"):
-            print(f'{number} roads from {sys.argv[1]} to philosophy')
-            sys.exit(0)
+            break 
 
         url = get_href(soap, prefix)
         if url == None:
@@ -63,6 +61,11 @@ def main():
             sys.exit(0)
         
         url = main_url + url
+
+    for title in all_titles:
+        print(title)
+    print(f'{number} roads from {sys.argv[1]} to philosophy')
+    
     return 0
 
 if __name__ == '__main__':
