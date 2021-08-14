@@ -1,0 +1,39 @@
+{% extends 'ex01/base.html' %}
+{% load static %}
+
+{% block style %}
+<link type="text/css" rel="stylesheet" href="{% static stylesheet %}"></link>
+{% endblock %}
+
+{% block title %}<title>{{title}}</title>{% endblock %}
+
+{% block body %}
+<div id="defaultChapterFont"><h1>Processing static web pages</h1>
+<p>A static website comprises a set of related HTML pages and files hosted on a computer running a web server.</p>
+<p>A web server is software that serves web pages in response to requests from web browsers. A page request is generated when a visitor clicks a link on a web page, selects a bookmark in a browser, or enters a URL in a browser&#146;s address text box. </p>
+<p>The final content of a static web page is determined by the page designer and doesn&#146;t change when the page is requested. Here&#146;s an example:</p>
+<pre>
+&lt;html&gt;
+   &lt;head&gt;
+      &lt;title&gt;Trio Motors Information Page&lt;/title&gt;
+   &lt;/head&gt;
+   &lt;body&gt;
+      &lt;h1&gt;About Trio Motors&lt;/h1&gt;
+      &lt;p&gt;Trio Motors is a leading automobile manufacturer.&lt;/p&gt;
+   &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p>Every line of the page&#146;s HTML code is written by the designer before the page is placed on the server. Because the HTML doesn&#146;t change once it&#146;s on the server, this kind of page is called a static page.</p>
+<table width="100%" border="0" cellpadding="2" cellspacing="2" class="nav">
+   <tr valign="top">
+<td width="5"><p><b>NOTE</b></p>
+</td>
+<td width="1"><p>&#160;</p>
+</td>
+<td ><p>Strictly speaking, a &#34;static&#34; page may not be static at all. For example, a rollover image or Flash content (a SWF file) can make a static page come alive. However, this documentation refers to a&#160;page as static if it is sent to the browser without modifications. </p>
+</td>
+</tr>
+</table>
+<p>When the web server receives a request for a static page, the server reads the request, finds the page, and sends it to the requesting browser, as shown in the following figure: </p>
+<p>In the case of web applications, certain lines of code are undetermined when the visitor requests the page. These lines must be determined by some mechanism before the page can be sent to the browser. The mechanism is discussed in the following section.</p>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'ex01/base.html' %}
+{% load static %}
+
+{% block style %}
+<link type="text/css" rel="stylesheet" href="{% static stylesheet %}"></link>
+{% endblock %}
+
+{% block title %}<title>{{title}}</title>{% endblock %}
+
+{% block body %}
+    <p>Blocks are used for inheritance and act as both placeholders and replacements at the same time. They are documented in detail in the <a href="https://jinja.palletsprojects.com/en/3.0.x/templates/#blocks"> Get more information</a></p>
+    <p>If the application enables the Loop Controls, it’s possible to use break and continue in loops. When break is reached, the loop is terminated; if continue is reached, the processing is stopped and continues with the next iteration.<a href="https://jinja.palletsprojects.com/en/3.0.x/templates/#loop-controls"> Get more information</a>.</p>
+    <p>The if statement in Jinja is comparable with the Python if statement.<a href="https://jinja.palletsprojects.com/en/3.0.x/templates/#if"> Get more information</a></p>
+    <p>Template variables are defined by the context dictionary passed to the template.<a href="https://jinja.palletsprojects.com/en/3.0.x/templates/#variables"> Get more information</a></p>
+{% endblock %}
+

@@ -1,0 +1,30 @@
+{% extends 'ex01/base.html' %}
+{% load static %}
+
+{% block style %}
+<link type="text/css" rel="stylesheet" href="{% static stylesheet %}"></link>
+{% endblock %}
+
+{% block title %}<title>{{title}}</title>{% endblock %}
+
+{% block body %}
+<p>
+    Django was created in the fall of 2003, when the web programmers at the 
+    Lawrence Journal-World newspaper, Adrian Holovaty and Simon Willison, 
+    began using Python to build applications.
+</p>
+<p>
+    Jacob Kaplan-Moss was hired early in Django's development shortly before 
+    Simon Willison's internship ended.
+</p>
+<p>
+    It was released publicly under a BSD license in July 2005. 
+    The framework was named after guitarist Django Reinhardt.
+</p>
+<p>
+    Adrian Holovaty is a Romani jazz guitar player and a big fan of Django Reinhardt.
+    In June 2008, it was announced that a newly formed Django Software Foundation (DSF) 
+    would maintain Django in the future.
+</p>
+
+{% endblock %}
