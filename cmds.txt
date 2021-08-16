@@ -19,8 +19,12 @@ sudo -u postgres psql
 69966996
 
 
+\l перечисляет все базы данных
+
 \c database_name
 
 \dt
 
 SELECT * FROM table_name
+drop owned by djangouser;
+drop table table_name
