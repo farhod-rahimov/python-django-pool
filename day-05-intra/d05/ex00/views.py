@@ -20,4 +20,4 @@ def create_table(request):
         conn.close()
     except Exception as err:
         return(HttpResponse(err))
-    return (HttpResponse("ok"))
+    return (HttpResponse("OK"))
