@@ -5,3 +5,22 @@ pip install --upgrade pip
 
 pip freeze > requirements.txt
 pip install -Ur requirements.txt
+
+
+----------------- 
+d05
+
+export PATH=/Library/PostgreSQL/13/bin:${PATH}
+
+sudo -u postgres pg_ctl -D /Library/PostgreSQL/13/data start
+sudo -u postgres pg_ctl -D /Library/PostgreSQL/13/data stop
+
+sudo -u postgres psql
+69966996
+
+
+\c database_name
+
+\dt
+
+SELECT * FROM table_name
