@@ -97,5 +97,4 @@ def remove_movie(request):
     conn.commit()
     cursor.close()
     conn.close()
-    # return (remove_page(request))
-    return (HttpResponse(request.POST['movies']))
+    return (remove_page(request))
