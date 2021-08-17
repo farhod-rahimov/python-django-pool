@@ -15,7 +15,8 @@
         {% if data %}
             <table>
                 <tr>
-                    <th>title</th><th>episode_nb</th><th>opening_crawl</th><th>director</th><th>producer</th><th>release_date</th>
+                    <th>title</th><th>episode_nb</th><th>opening_crawl</th><th>director</th><th>producer</th>
+                    <th>release_date</th><th>created</th><th>updated</th>
                 </tr>
                 {% for d in data %}
                 <tr>
@@ -27,6 +28,8 @@
                     <td>{{ d.director }}</td>
                     <td>{{ d.producer }}</td>
                     <td>{{ d.release_date }}</td>
+                    <td>{{ d.created }}</td>
+                    <td>{{ d.updated }}</td>
                 </tr>
                 {% endfor %}
             </table>

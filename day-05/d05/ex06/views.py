@@ -84,7 +84,7 @@ def display(request):
     conn.close()
     return render(request, 'ex06/display_movies.html', {'data': data})
 
-def remove_page(request):
+def update_page(request):
     try:
         conn = psycopg2.connect('dbname=djangotraining user=djangouser password=secret')
         cursor = conn.cursor(cursor_factory = psycopg2.extras.RealDictCursor)
@@ -95,24 +95,20 @@ def remove_page(request):
     
     cursor.close()
     conn.close()
-    return render(request, 'ex06/delete_movies.html', {'data': data})
+    return render(request, 'ex06/update_movies.html', {'data': data})
 
 def update(request):
     if request.method != 'POST':
-        return remove_page(request)
+        return update_page(request)
 
     try:
         conn = psycopg2.connect('dbname=djangotraining user=djangouser password=secret')
         cursor = conn.cursor(cursor_factory = psycopg2.extras.RealDictCursor)
-        cursor.execute(f"DELETE from ex06_movies WHERE episode_nb = {request.POST['movies']};")
+        cursor.execute(f"UPDATE ex06_movies SET opening_crawl = '{request.POST['text']}' WHERE episode_nb = {request.POST['movies']};")
     except Exception as err:
         return HttpResponse("No data available")
     
     conn.commit()
     cursor.close()
     conn.close()
-    return (HttpResponse(request.POST))
-    # return (remove_page(request))
-
-
-# UPDATE ex06_movies SET title = 'blalalallala' WHERE episode_nb = 1;
+    return (update_page(request))
