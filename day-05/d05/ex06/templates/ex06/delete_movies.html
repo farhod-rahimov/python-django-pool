@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <body>
+
+    <h1>UPDATE MOVIE PAGE</h1>
+    
+    {% if data %}
+        <form method="post">
+            {% csrf_token %}
+            <label for="cars">Choose a movie to delete from database:</label>
+            <select name="movies" id="movies">
+                {% for d in data %}
+                <option value="{{ d.episode_nb }}">{{ d.title }}</option>
+                {% endfor %}
+            </select>
+            <br><br>
+            <textarea rows="25" cols="100" name="text" id="text">{{ d.opening_crawl }}</textarea><br>
+            <button type="submit">remove</button>
+        </form>
+    {% else %}
+        <h2>No data available</h2>
+    {% endif %}
+    </body>
+</html>
