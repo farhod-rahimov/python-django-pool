@@ -65,4 +65,6 @@ def display(request):
     except Exception as err:
         return HttpResponse("No data available")
 
+    cursor.close()
+    conn.close()
     return render(request, 'ex02/display_movies.html', {'data': data})

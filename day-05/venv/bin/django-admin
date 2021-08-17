@@ -1,4 +1,4 @@
-#!/Users/farhod/django/day-05/venv/bin/python3
+#!/Users/btammara/django/day-05/venv/bin/python3.7
 # -*- coding: utf-8 -*-
 import re
 import sys

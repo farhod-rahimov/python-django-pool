@@ -17,6 +17,7 @@ sudo -u postgres pg_ctl -D /Library/PostgreSQL/13/data stop
 
 sudo -u postgres psql
 69966996
+----------------- 
 
 
 \l перечисляет все базы данных
@@ -28,3 +29,17 @@ sudo -u postgres psql
 SELECT * FROM table_name
 drop owned by djangouser;
 drop table table_name
+
+
+--------------
+./psql
+ALTER USER djangouser;
+\c djangotraining
+
+brew services stop postgresql
+brew services start postgresql
+
+
+-------------
+pip uninstall psycopg2
+pip install --no-binary :all: psycopg2
