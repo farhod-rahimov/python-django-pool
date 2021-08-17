@@ -6,3 +6,4 @@ local_lib
 new_folder
 migrations
 __pycache__
+venv
