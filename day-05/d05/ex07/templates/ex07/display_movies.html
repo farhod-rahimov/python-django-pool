@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <style>
+        table, th, td {
+            border: 1px solid rgb(182, 3, 3);
+            border-collapse: collapse;
+            padding: 4px;
+            text-align: center;
+        }
+    </style>
+    <body>
+        {% if data %}
+            <table>
+                <tr>
+                    <th>title</th><th>episode_nb</th><th>opening_crawl</th><th>director</th><th>producer</th>
+                    <th>release_date</th><th>created</th><th>updated</th>
+                </tr>
+                {% for d in data %}
+                <tr>
+                    <td>{{ d.title }}</td>
+                    <td>{{ d.episode_nb }}</td>
+                    {% if d.opening_crawl %}<td>{{ d.opening_crawl }}</td>
+                    {% else %}<td></td>
+                    {% endif %}
+                    <td>{{ d.director }}</td>
+                    <td>{{ d.producer }}</td>
+                    <td>{{ d.release_date }}</td>
+                    <td>{{ d.created }}</td>
+                    <td>{{ d.updated }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <h1>No data available</h1>
+        {% endif %}
+    </body>
+</html>
