@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <body>
+
+    <h1>DELETE MOVIE PAGE</h1>
+    
+    {% if data %}
+        <form method="post">
+            {% csrf_token %}
+            <label for="cars">Choose a movie to delete from database:</label>
+            <select name="movies" id="movies">
+                {% for d in data %}
+                <option value="{{ d.episode_nb }}">{{ d.title }}</option>
+                {% endfor %}
+            </select>
+            <br><br>
+            <button type="submit">remove</button>
+        </form>
+    {% else %}
+        <h2>No data available</h2>
+    {% endif %}
+    </body>
+</html>
