@@ -17,8 +17,10 @@ from django.contrib import admin
 from django.urls import path
 from django.urls.conf import include
 
+from . import views
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('ex00/', include('ex00.urls')),
-    path('ex01/', include('ex01.urls')),
+    path('', views.main),
+    path('signup/', views.signup),
+    path('login/', views.login),
 ]

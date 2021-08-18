@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Day-06 Ex-01</title>
+	</head>
+	<body>
+		<form method="post">
+			{% csrf_token %}
+			{{ form.username }}
+			{{ form.password }}
+			{{ form.confirm_password }}
+			<input type="submit" value="SIGNUP">
+		</form>
+		{% if error %}
+			<p>{{ error }}</p>
+		{% endif %}
+		<p>Have an Account? <a href="/ex01/login"> Login Now!</a></p>
+	</body>
+</html>
