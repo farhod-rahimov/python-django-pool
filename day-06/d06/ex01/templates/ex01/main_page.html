@@ -6,7 +6,12 @@
     </head>
     <body>
             <nav><h1>Hello {{request.COOKIES.username}} !</h1></nav>
-            <a href="/ex01/login">login page</a>
-            <a href="/ex01/signup">sign up page</a>
+            {% if logged_in %}
+                <a href="/ex01/logout">log out</a>
+            {% else %}
+                {{ logged_in }}
+                <a href="/ex01/login">login page</a>
+                <a href="/ex01/signup">sign up page</a>
+            {% endif %}
     </body>
 </html>
